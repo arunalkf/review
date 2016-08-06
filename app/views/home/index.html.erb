@@ -1,4 +1,7 @@
 <style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 * {
     box-sizing: border-box;
 }
@@ -6,11 +9,42 @@
     border: 1px solid red;
     padding: 15px;
 }
-.menu {
-    width: 25%;
+.row::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+[class*="col-"] {
     float: left;
     padding: 15px;
-    border: none;
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.menu li {
+	font-size: 22px;
+    padding: 8px;
+    margin-bottom: 7px;
+    background-color :#33b5e5;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.menu li:hover {
+    background-color: #0099cc;
 }
 .main {
 
@@ -18,16 +52,25 @@
     float: left;
 
 }
+
+@media only screen and (max-width: 300px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+}
+
+
 </style>
 
-<div class="main">
-	<img src="http://www.hindustantimes.com/rf/image_size_640x362/HT/p2/2016/06/08/Pictures/kabali-poster_3526d2d2-2d62-11e6-ae51-029221314c47.jpg" alt="Mountain View" >
-</div>
-<div class="menu">
-<h1>This month Movie status</h1>
+
+	<img class="col-6" src="http://www.hindustantimes.com/rf/image_size_640x362/HT/p2/2016/06/08/Pictures/kabali-poster_3526d2d2-2d62-11e6-ae51-029221314c47.jpg" alt="Mountain View" >
+
+
+<div class="col-6 menu">
 <ol>
 <% @movies.each do |movie| %>
-<h3><li><%= movie.title %></li></h3>
+<li><%= movie.title %></li>
 <% end %>
 </ol>
 
